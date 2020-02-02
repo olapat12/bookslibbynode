@@ -13,6 +13,8 @@ var db = nano.use('address');
 
 var app = express();
 
+const bookRouter = express.Router()
+
 app.set('port', process.env.PORT || 900);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -25,6 +27,18 @@ app.use('/js', express.static(path.join(__dirname, '/node_modules/bootstrap/dist
 app.use('/js', express.static(path.join(__dirname, '/node_modules/bootstrap/dist')));
 
 app.get('/', routes.index);
+
+bookRouter.route('/')
+.get((req, res)=>{
+    res.send('hello books');
+});
+
+bookRouter.route('/single')
+.get((req, res)=>{
+    res.send('hello from single book');
+});
+
+app.use('/books', bookRouter);
 
 app.get('/', (req, res) => {
     res.render('index')
