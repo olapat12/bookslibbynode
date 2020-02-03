@@ -4,8 +4,8 @@ exports.index = function(req, res){
     {
         title:'Library', 
         nav: [
-            {link: '/books', title: 'books'},
-            {link: '/authors', title: 'authors'}
+            {link: '/books', title: 'book'},
+            {link: '/authors', title: 'author'}
         ]
     });
 };
